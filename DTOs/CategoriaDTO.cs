@@ -7,12 +7,6 @@ namespace SupermercadoAPI.DTOs
         public string Descricao { get; set; }
     }
 
-    public class CategoriaCreateDTO
-    {
-        public string Nome { get; set; }
-        public string Descricao { get; set; }
-    }
-
     public class CategoriaPorIdDTO
     {
         public string Nome { get; set; }

@@ -10,7 +10,6 @@ namespace SupermercadoAPI.Mapper
         {
             // Mapping for Categoria
             CreateMap<Categoria, CategoriaDTO>().ReverseMap();
-            CreateMap<Categoria, CategoriaCreateDTO>().ReverseMap();
             CreateMap<Categoria, CategoriaPorIdDTO>().ReverseMap();
         }
     }

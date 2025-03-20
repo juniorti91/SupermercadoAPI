@@ -1,3 +1,5 @@
+using Dapper;
+using Microsoft.Data.SqlClient;
 using SupermercadoAPI.DTOs;
 using SupermercadoAPI.Services.Interfaces;
 
@@ -12,29 +14,61 @@ namespace SupermercadoAPI.Services
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
-        public Task<List<CategoriaDTO>> ListarCategorias()
+        public async Task<IEnumerable<CategoriaDTO>> ListarCategorias()
         {
-            throw new NotImplementedException();
+            var query = "SELECT * FROM Categoria";
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var result = await connection.QueryAsync<CategoriaDTO>(query);
+                return result;
+            }
         }
 
-        public Task<CategoriaPorIdDTO> ObterCategoriaPorId(int id)
+        public async Task<CategoriaPorIdDTO> ObterCategoriaPorId(int id)
         {
-            throw new NotImplementedException();
+            var query = "SELECT * FROM Categoria WHERE Id = @Id";
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var result = await connection.QueryFirstOrDefaultAsync<CategoriaPorIdDTO>(query, new { Id = id });
+                return result;
+            }
         }
 
-        public Task<CategoriaCreateDTO> CriarCategoria(CategoriaCreateDTO categoria)
+        public async Task<CategoriaDTO> CriarCategoria(CategoriaDTO categoria)
         {
-            throw new NotImplementedException();
+            var query = "INSERT INTO Categoria (Nome, Descricao) VALUES (@Nome, @Descricao)";
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.ExecuteAsync(query, categoria);
+                return categoria;
+            }
         }
 
-        public Task<CategoriaDTO> AtualizarCategoria(int id, CategoriaDTO categoria)
+        public async Task<CategoriaDTO> AtualizarCategoria(int id, CategoriaDTO categoria)
         {
-            throw new NotImplementedException();
+            var query = "UPDATE Categoria SET Nome = @Nome, Descricao = @Descricao WHERE Id = @Id";
+            
+            categoria.Id = id;
+            
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.ExecuteAsync(query, categoria);
+                return categoria;
+            }
         }
 
-        public Task<bool> DeletarCategoria(int id)
+        public async Task<bool> DeletarCategoria(int id)
         {
-            throw new NotImplementedException();
+            var query = "DELETE FROM Categoria WHERE Id = @Id";
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var result = await connection.ExecuteAsync(query, new { Id = id });
+                return result > 0;
+            }
         }
     }
 }
