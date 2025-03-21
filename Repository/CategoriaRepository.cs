@@ -1,8 +1,8 @@
 using SupermercadoAPI.DTOs;
-using SupermercadoAPI.Repositories.Interfaces;
+using SupermercadoAPI.Repository.Interfaces;
 using SupermercadoAPI.Services.Interfaces;
 
-namespace SupermercadoAPI.Repositories
+namespace SupermercadoAPI.Repository
 {
     public class CategoriaRepository : ICategoriaRepository
     {
@@ -23,15 +23,15 @@ namespace SupermercadoAPI.Repositories
             return _categoriaService.ObterCategoriaPorId(id);
         }
 
-        public Task<CategoriaDTO> AtualizarCategoria(int id, CategoriaDTO categoria)
-        {
-            return _categoriaService.AtualizarCategoria(id, categoria);
-        }
-
         public Task<CategoriaDTO> CriarCategoria(CategoriaDTO categoria)
         {
             return _categoriaService.CriarCategoria(categoria);
-        }        
+        }
+
+        public Task<CategoriaDTO> AtualizarCategoria(int id, CategoriaDTO categoria)
+        {
+            return _categoriaService.AtualizarCategoria(id, categoria);
+        }               
 
         public Task<bool> DeletarCategoria(int id)
         {

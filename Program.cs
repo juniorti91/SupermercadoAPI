@@ -1,5 +1,5 @@
-using SupermercadoAPI.Repositories;
-using SupermercadoAPI.Repositories.Interfaces;
+using SupermercadoAPI.Repository;
+using SupermercadoAPI.Repository.Interfaces;
 using SupermercadoAPI.Services;
 using SupermercadoAPI.Services.Interfaces;
 
@@ -7,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Injeção de dependência
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 
 // Configurar AutoMapper

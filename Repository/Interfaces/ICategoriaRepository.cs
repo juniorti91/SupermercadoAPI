@@ -1,6 +1,6 @@
 using SupermercadoAPI.DTOs;
 
-namespace SupermercadoAPI.Repositories.Interfaces
+namespace SupermercadoAPI.Repository.Interfaces
 {
     public interface ICategoriaRepository
     {
