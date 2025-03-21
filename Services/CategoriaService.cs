@@ -1,5 +1,5 @@
 using Dapper;
-using Microsoft.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using SupermercadoAPI.DTOs;
 using SupermercadoAPI.Services.Interfaces;
 
@@ -18,7 +18,7 @@ namespace SupermercadoAPI.Services
         {
             var query = "SELECT * FROM Categoria";
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 var result = await connection.QueryAsync<CategoriaDTO>(query);
                 return result;
@@ -29,7 +29,7 @@ namespace SupermercadoAPI.Services
         {
             var query = "SELECT * FROM Categoria WHERE Id = @Id";
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 var result = await connection.QueryFirstOrDefaultAsync<CategoriaPorIdDTO>(query, new { Id = id });
                 return result;
@@ -40,7 +40,7 @@ namespace SupermercadoAPI.Services
         {
             var query = "INSERT INTO Categoria (Nome, Descricao) VALUES (@Nome, @Descricao)";
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 await connection.ExecuteAsync(query, categoria);
                 return categoria;
@@ -53,7 +53,7 @@ namespace SupermercadoAPI.Services
             
             categoria.Id = id;
             
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 await connection.ExecuteAsync(query, categoria);
                 return categoria;
@@ -64,7 +64,7 @@ namespace SupermercadoAPI.Services
         {
             var query = "DELETE FROM Categoria WHERE Id = @Id";
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new MySqlConnection(_connectionString))
             {
                 var result = await connection.ExecuteAsync(query, new { Id = id });
                 return result > 0;
