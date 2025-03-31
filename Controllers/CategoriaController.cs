@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SupermercadoAPI.DTOs;
 using SupermercadoAPI.Repository.Interfaces;
+
 namespace SupermercadoAPI.Controllers
 {
     [ApiController]
