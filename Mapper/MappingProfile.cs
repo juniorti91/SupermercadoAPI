@@ -27,6 +27,14 @@ namespace SupermercadoAPI.Mapper
             // Mapping for Funcionario
             CreateMap<Funcionario, FuncionarioDTO>().ReverseMap();
             CreateMap<Funcionario, FuncionarioPorIdDTO>().ReverseMap();
+
+            // Mapping for ItemCompra
+            CreateMap<ItemCompra, ItemCompraDTO>().ReverseMap();
+            CreateMap<ItemCompra, ItemCompraPorIdDTO>().ReverseMap();
+
+            /// Mapping for ItemVenda
+            CreateMap<ItemVenda, ItemVendaDTO>().ReverseMap();
+            CreateMap<ItemVenda, ItemVendaPorIdDTO>().ReverseMap();            
         }
     }
 }

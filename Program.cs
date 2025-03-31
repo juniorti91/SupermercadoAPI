@@ -11,6 +11,8 @@ builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<ICompraService, CompraService>();
 builder.Services.AddScoped<IFornecedorService, FornecedorService>();
 builder.Services.AddScoped<IFuncionarioService, FuncionarioService>();
+builder.Services.AddScoped<IItemCompraService, ItemCompraService>();
+builder.Services.AddScoped<IItemVendaService, ItemVendaService>();
 
 // Injeção de dependência dos Repositóries
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
@@ -18,6 +20,8 @@ builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddScoped<ICompraRepository, CompraRepository>();
 builder.Services.AddScoped<IFornecedorRepository, FornecedorRepository>();
 builder.Services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
+builder.Services.AddScoped<IItemCompraRepository, ItemCompraRepository>();
+builder.Services.AddScoped<IItemVendaRepository, ItemVendaRepository>();
 
 // Configurar AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
