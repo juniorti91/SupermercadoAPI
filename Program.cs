@@ -5,11 +5,15 @@ using SupermercadoAPI.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Injeção de dependência
+// Injeção de dependência dos Serviços
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<ICompraService, CompraService>();
+
+// Injeção de dependência dos Repositórios
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddScoped<ICompraRepository, CompraRepository>();
 
 // Configurar AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
