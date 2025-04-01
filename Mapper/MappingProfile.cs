@@ -34,7 +34,15 @@ namespace SupermercadoAPI.Mapper
 
             /// Mapping for ItemVenda
             CreateMap<ItemVenda, ItemVendaDTO>().ReverseMap();
-            CreateMap<ItemVenda, ItemVendaPorIdDTO>().ReverseMap();            
+            CreateMap<ItemVenda, ItemVendaPorIdDTO>().ReverseMap();
+
+            // Mapping for Produto
+            CreateMap<Produto, ProdutoDTO>().ReverseMap();
+            CreateMap<Produto, ProdutoPorIdDTO>().ReverseMap();
+
+            // Mapping for Venda
+            CreateMap<Venda, VendaDTO>().ReverseMap();
+            CreateMap<Venda, VendaPorIdDTO>().ReverseMap();            
         }
     }
 }
