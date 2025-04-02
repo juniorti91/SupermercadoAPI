@@ -20,7 +20,7 @@ namespace SupermercadoAPI.Services
                             p.*,
                             c.nome AS NomeCategoria, 
                             f.nome AS NomeFornecedor
-                            from Produto AS p
+                            FROM Produto AS p
                         INNER JOIN categoria c ON p.categoria_id = c.id
                         INNER JOIN fornecedor f ON p.fornecedor_id = f.id";
 
@@ -37,7 +37,7 @@ namespace SupermercadoAPI.Services
                             p.*,
                             c.nome AS NomeCategoria, 
                             f.nome AS NomeFornecedor
-                            from Produto AS p
+                            FROM Produto AS p
                         INNER JOIN categoria c ON p.categoria_id = c.id
                         INNER JOIN fornecedor f ON p.fornecedor_id = f.id
                         WHERE p.id = @Id";

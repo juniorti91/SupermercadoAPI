@@ -21,7 +21,7 @@ namespace SupermercadoAPI.Services
                               v.*, 
                               c.nome AS NomeCliente, 
                               f.nome AS NomeFuncionario
-                              from venda AS v
+                              FROM venda AS v
                           INNER JOIN cliente c ON v.cliente_id = c.id
                           INNER JOIN funcionario f ON v.funcionario_id = f.id";
 
@@ -38,7 +38,7 @@ namespace SupermercadoAPI.Services
                               v.*, 
                               c.nome AS NomeCliente, 
                               f.nome AS NomeFuncionario
-                              from venda AS v
+                              FROM venda AS v
                           INNER JOIN cliente c ON v.cliente_id = c.id
                           INNER JOIN funcionario f ON v.funcionario_id = f.id
                           WHERE v.id = @Id";
