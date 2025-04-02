@@ -7,8 +7,8 @@ namespace SupermercadoAPI.Models
         public string Descricao { get; set; }
         public decimal Preco { get; set; }
         public int QuantidadeEstoque { get; set; }
-        public int? CategoriaId { get; set; } // Chave estrangeira para Categoria
-        public int? FornecedorId { get; set; } // Chave estrangeira para Fornecedor
+        public int CategoriaId { get; set; } // Chave estrangeira para Categoria
+        public int FornecedorId { get; set; } // Chave estrangeira para Fornecedor
         public string CodigoBarras { get; set; }
         public DateTime? DataValidade { get; set; }
     }

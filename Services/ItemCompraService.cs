@@ -16,7 +16,13 @@ namespace SupermercadoAPI.Services
 
         public async Task<IEnumerable<ItemCompraDTO>> ListarItensCompra()
         {
-            var query = "SELECT * FROM ItemCompra";
+            var query = @"SELECT 
+                              ic.*, 
+                              c.valor_total AS ValorCompra, 
+                              p.nome AS NomeProduto 
+                              FROM itemcompra AS ic
+                          INNER JOIN compra c ON ic.compra_id = c.id
+                          INNER JOIN produto p ON ic.produto_id = p.id";
 
             using (var connection = new MySqlConnection(_connectionString))
             {
@@ -27,7 +33,14 @@ namespace SupermercadoAPI.Services
 
         public async Task<ItemCompraPorIdDTO> ObterItemCompraPorId(int id)
         {
-            var query = "SELECT * FROM ItemCompra WHERE Id = @Id";
+            var query = @"SELECT 
+                              ic.*, 
+                              c.valor_total AS ValorCompra, 
+                              p.nome AS NomeProduto 
+                              FROM itemcompra AS ic
+                          INNER JOIN compra c ON ic.compra_id = c.id
+                          INNER JOIN produto p ON ic.produto_id = p.id
+                          WHERE ic.id = @Id;";
 
             using (var connection = new MySqlConnection(_connectionString))
             {

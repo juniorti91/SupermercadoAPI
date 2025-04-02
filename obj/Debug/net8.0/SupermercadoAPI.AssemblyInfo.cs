@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SupermercadoAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6bb4cd2aa2a61fbe3fe2d06957cb4cd0d4da94f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+462f493aaa5019e42946f988da3a8ed4b96fa8f1")]
 [assembly: System.Reflection.AssemblyProductAttribute("SupermercadoAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SupermercadoAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

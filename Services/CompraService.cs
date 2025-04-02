@@ -16,7 +16,11 @@ namespace SupermercadoAPI.Services
 
         public async Task<IEnumerable<CompraDTO>> ListarCompras()
         {
-            var query = @"SELECT * FROM Compra";
+            var query = @"SELECT 
+                             c.*,
+                             f.nome AS NomeFornecedor 
+                          FROM compra c
+                          INNER JOIN fornecedor f ON c.fornecedor_id = f.id";
 
             using (var connection = new MySqlConnection(_connectionString))
             {
@@ -27,7 +31,12 @@ namespace SupermercadoAPI.Services
 
         public async Task<CompraPorIdDTO> ObterCompraPorId(int id)
         {
-            var query = "SELECT * FROM Compra WHERE Id = @Id";
+            var query = @"SELECT 
+                             c.*,
+                             f.nome AS NomeFornecedor 
+                          FROM compra c
+                          INNER JOIN fornecedor f ON c.fornecedor_id = f.id
+                          WHERE c.id = @Id";
 
             using (var connection = new MySqlConnection(_connectionString))
             {
