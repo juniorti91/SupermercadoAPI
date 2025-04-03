@@ -35,6 +35,26 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Configurar Kestrel para escutar na porta 5047
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5048); // Permite conexões de qualquer IP na porta 5048
+});
+
+// Configuração de CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalAndExternal",
+        policyBuilder => policyBuilder
+            .WithOrigins(
+                "http://localhost:5048",
+                "http://191.252.103.130:8083",
+                "http://191.252.103.190:8083" // Novo IP
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -42,6 +62,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Habilitar o uso do Swagger em Produção
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 app.MapControllers();
