@@ -48,8 +48,8 @@ builder.Services.AddCors(options =>
         policyBuilder => policyBuilder
             .WithOrigins(
                 "http://localhost:5048",
-                "http://191.252.103.130:8083",
-                "http://191.252.103.190:8083" // Novo IP
+                "http://157.245.245.179:8083",
+                "http://157.245.245.179:8083" // Novo IP
             )
             .AllowAnyHeader()
             .AllowAnyMethod());
